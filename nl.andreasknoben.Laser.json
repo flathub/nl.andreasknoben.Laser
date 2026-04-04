@@ -72,8 +72,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.24.12.tar.xz",
-                    "sha256" : "19ed6eef4ea1a742234fb35e2cdb107168595a4dd409a9fac0b7a16543eee78b"
+                    "url" : "https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.26.11.tar.xz",
+                    "sha256" : "bf9c9f72ee374825cfd43868c285bcb01700df2584069e75d7af455fe48244f8"
                 }
             ]
         },
