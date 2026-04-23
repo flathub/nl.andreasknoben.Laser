@@ -16,13 +16,13 @@
     "cleanup" : [
         "/include",
         "/lib/pkgconfig",
-        "/man",
-        "/share/doc",
-        "/share/gtk-doc",
+        "/share/info",
         "/share/man",
-        "/share/pkgconfig",
         "*.la",
         "*.a"
+    ],
+    "cleanup-commands": [
+        "python3 -m compileall --invalidation-mode=unchecked-hash /app"
     ],
     "modules" : [
         {
@@ -143,8 +143,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url": "https://codeberg.org/andreasknoben/Laser/archive/v0.3.1.tar.gz",
-                    "sha256": "3df5ab92b33e7ad4734680d75c147ebba51ab0cdcdbea3988724747cb55e9ff8"
+                    "url": "https://codeberg.org/andreasknoben/Laser/archive/v0.3.2.tar.gz",
+                    "sha256": "22b336dc5954a86082cde77e7458cecd6088d8ee59fe08f27b2117b3feb59ac5"
                 }
             ]
         }
