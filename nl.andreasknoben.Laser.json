@@ -88,6 +88,16 @@
             ]
         },
         {
+            "name": "swig",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://prdownloads.sourceforge.net/swig/swig-4.4.1.tar.gz",
+                    "sha256": "40162a706c56f7592d08fd52ef5511cb7ac191f3593cf07306a0a554c6281fcf"
+                }
+            ]
+        },
+        {
             "name" : "cd-discid",
             "buildsystem" : "simple",
             "build-commands" : [
@@ -107,6 +117,20 @@
 			"buildsystem": "simple",
 			"build-commands": [],
 			"modules": [
+                {
+                    "name": "python3-pycdio",
+                    "buildsystem": "simple",
+                    "build-commands": [
+				        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"pycdio\" --no-build-isolation"
+				    ],
+				    "sources": [
+                        {
+                            "type": "file",
+                            "url": "https://files.pythonhosted.org/packages/73/02/e482cd03681c641aba3863216029814443c023ac772ea5c638b3ff8e699f/pycdio-2.1.1.tar.gz",
+                            "sha256": "61734db8c554b7b1a2cb2da2e2c15d3f9f5973a57cfb06f8854c38029004a9f8"
+                        }
+                    ]
+                },
 				{
 				    "name": "python3-discid",
 				    "buildsystem": "simple",
@@ -143,8 +167,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url": "https://codeberg.org/andreasknoben/Laser/archive/v0.3.2.tar.gz",
-                    "sha256": "22b336dc5954a86082cde77e7458cecd6088d8ee59fe08f27b2117b3feb59ac5"
+                    "url": "https://codeberg.org/andreasknoben/Laser/archive/v0.4.0.tar.gz",
+                    "sha256": "d63efa12da3ee5283a230c01ebe39e7188504270c1480691b6f2116515d0a22d"
                 }
             ]
         }
