@@ -30,29 +30,90 @@
             "buildsystem" : "autotools",
             "config-opts" : [
                 "--disable-static",
-                "--enable-shared",
-                "--enable-cdio-paranoia"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://github.com/libcdio/libcdio/releases/download/2.3.0/libcdio-2.3.0.tar.gz",
-                    "sha256" : "37bcb13296febbcff9dc4485834bac09212cb463c31fcea52f70ee1dd3a5a5de"
-                }
-            ]
-        },
-        {
-            "name" : "libcdio-paranoia",
-            "buildsystem" : "autotools",
-            "config-opts" : [
-                "--disable-static",
                 "--enable-shared"
             ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/libcdio/libcdio-paranoia/releases/download/release-10.2+2.0.2/libcdio-paranoia-10.2+2.0.2.tar.gz",
-                    "sha256" : "99488b8b678f497cb2e2f4a1a9ab4a6329c7e2537a366d5e4fef47df52907ff6"
+                    "url" : "https://github.com/libcdio/libcdio/releases/download/2.4.0/libcdio-2.4.0.tar.gz",
+                    "sha256" : "bf7cde63762bb12db7755c395c441e49406fde7e1d9f9a9be7e3b940b1f405d7"
+                }
+            ]
+        },
+        {
+            "name": "paranoia",
+            "buildsystem": "simple",
+            "build-commands": [
+                "cp config.guess.new configure.guess",
+                "cp config.sub.new configure.sub",
+                "./configure --prefix=/app",
+                "make all slib",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url" : "http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz",
+                    "sha256": "005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df"
+                },
+                {
+                    "type": "file",
+                    "url": "https://cgit.git.savannah.gnu.org/cgit/config.git/plain/config.guess?id=428664896cf9e92d264976a960c76660938dffce",
+                    "dest-filename": "config.guess.new",
+                    "sha256": "ac18bbd7dc3769e1646af49ebba331a391829f4a73579b735dc8d439bd1c7f07"
+                },
+                {
+                    "type": "file",
+                    "url": "https://cgit.git.savannah.gnu.org/cgit/config.git/plain/config.sub?id=428664896cf9e92d264976a960c76660938dffce",
+                    "dest-filename": "config.sub.new",
+                    "sha256": "f9a31e9a3f5b7cbeb8d8c3f2015895a51e7222130114c9c363fcbccd78e4bf6b"
+                }
+            ]
+        },
+        {
+            "name": "cdrdao",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/cdrdao/cdrdao/releases/download/rel_1_2_6/cdrdao-1.2.6.tar.gz",
+                    "sha256": "10d15b0dc78bd44a9a4a8d7d85498c734771036159d05aa940e17f18fc40d40f"
+                }
+            ]
+        },
+        {
+            "name": "gst-plugins-base",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dgl=disabled",
+                "-Dgl-graphene=disabled",
+                "-Dgl-jpeg=disabled",
+                "-Dgl-png=disabled",
+                "-Daudioconvert=enabled",
+                "-Daudioresample=enabled",
+                "-Dcdparanoia=enabled",
+                "-Dogg=enabled",
+                "-Dopus=enabled",
+                "-Dvorbis=enabled",
+                "-Dcompositor=disabled",
+                "-Dsubparse=disabled",
+                "-Dtcp=disabled",
+                "-Dvideoconvertscale=disabled",
+                "-Dvideorate=disabled",
+                "-Dvideotestsrc=disabled",
+                "-Dlibvisual=disabled",
+                "-Dtheora=disabled",
+                "-Dx11=disabled",
+                "-Dxshm=disabled",
+                "-Dxvideo=disabled",
+                "-Dxi=disabled",
+                "-Ddoc=disabled"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.26.11.tar.xz",
+                    "sha256": "fc50f885d41f5d0407ce0876ec7235d9e7b82d48db2f4bc72c5f244a4ac79263"
                 }
             ]
         },
@@ -62,12 +123,8 @@
             "config-opts" : [
                 "-Dcdio=enabled",
                 "-Dsidplay=disabled",
-                "-Dmpeg2dec=disabled",
-                "-Ddvdlpcmdec=disabled",
-                "-Da52dec=disabled",
-                "-Drealmedia=disabled",
-                "-Ddoc=disabled",
-                "-Dgpl=enabled"
+                "-Dgpl=enabled",
+                "-Ddoc=disabled"
             ],
             "sources" : [
                 {
@@ -82,8 +139,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/metabrainz/libdiscid/releases/download/v0.6.5/libdiscid-0.6.5.tar.gz",
-                    "sha256" : "72dbb493e07336418fe2056f0ebc7ce544eedb500bb896cc1cc04bd078c2d530"
+                    "url" : "https://github.com/metabrainz/libdiscid/releases/download/v0.7.0/libdiscid-0.7.0.tar.gz",
+                    "sha256" : "c230ed462c5ed7d7403ceb6984c57c8d05de42386d796bcd893636c0b0ba222f"
                 }
             ]
         },
@@ -140,8 +197,8 @@
 				    "sources": [
 				        {
 				            "type": "file",
-				            "url": "https://files.pythonhosted.org/packages/29/64/ca6cb42642108af91af780913b97765c9ef0c19c7e603b1eb50746659780/discid-1.4.0.tar.gz",
-				            "sha256": "50fd3db445caeb44b9f7763777ed49688c3cf4633da99d340c25b919496ba8b5"
+				            "url": "https://files.pythonhosted.org/packages/b3/1e/2ff9fc64a72764ed2efe9de3518b54125693ef2d05f7bcc547845a549cff/discid-1.4.2.tar.gz",
+				            "sha256": "0cbb4b96949c68cbc63c9fc4585ef9b7ec2b9d39e23bce0b4db5d61c6f7b81e6"
 				        }
 				    ]
 				},
@@ -167,8 +224,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url": "https://codeberg.org/andreasknoben/Laser/archive/v0.4.0.tar.gz",
-                    "sha256": "d63efa12da3ee5283a230c01ebe39e7188504270c1480691b6f2116515d0a22d"
+                    "url": "https://codeberg.org/andreasknoben/Laser/archive/v0.5.0.tar.gz",
+                    "sha256": "c33f33bbb2b1c13980617b8c88e35aa2178ff348936c366decc8f93f839aee7e"
                 }
             ]
         }
