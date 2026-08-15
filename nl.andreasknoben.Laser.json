@@ -44,8 +44,8 @@
             "name": "paranoia",
             "buildsystem": "simple",
             "build-commands": [
-                "cp config.guess.new config.guess",
-                "cp config.sub.new config.sub",
+                "cp config.guess.new configure.guess",
+                "cp config.sub.new configure.sub",
                 "./configure --prefix=/app",
                 "make all slib",
                 "make install"
