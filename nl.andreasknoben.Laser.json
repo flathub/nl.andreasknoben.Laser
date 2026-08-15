@@ -44,6 +44,8 @@
             "name": "paranoia",
             "buildsystem": "simple",
             "build-commands": [
+                "cp /usr/share/automake-*/config.guess .",
+        		"cp /usr/share/automake-*/config.sub .",
                 "./configure --prefix=/app",
                 "make all slib",
                 "make install"
